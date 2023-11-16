@@ -18,3 +18,4 @@ jobs:
     steps:
       - name:
         run: echo "goodbye world"
+    needs: hello_world
