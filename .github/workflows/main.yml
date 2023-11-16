@@ -21,8 +21,29 @@ jobs:
       - name: Build Code
         run: npm run build
 
-  check_npm:
+  test:
+    needs: build
     runs-on: ubuntu-latest  
     steps:
-      - name: check npm
-        run: npm -v
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run tests
+
+  audit_check:
+    needs: test
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Run Tests
+        run: npm audit fix   
+
+
+        
+      
