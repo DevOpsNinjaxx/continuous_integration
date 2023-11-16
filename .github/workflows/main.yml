@@ -20,8 +20,7 @@ jobs:
 
       - name: Build Code
         run: npm run build
-
-  test:
+  lint:
     needs: build
     runs-on: ubuntu-latest  
     steps:
@@ -31,8 +30,21 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Run Lint
+        run: npx eslint sum.js
+
+  test:
+    needs: lint
+    runs-on: ubuntu-latest  
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Run Tests
-        run: npm run tests
+        run: npm run test
 
   audit_check:
     needs: test
