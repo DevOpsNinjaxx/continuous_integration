@@ -6,16 +6,15 @@ on:
       - main
 
 jobs:
-  hello_world:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name:
-        run: echo "Hello world"
+      - name: Check out repository code
+        uses: actions/checkout@v4
 
 
-  goodbye_world:
+  check_npm:
     runs-on: ubuntu-latest  
     steps:
-      - name:
-        run: echo "goodbye world"
-    needs: hello_world
+      - name: check npm
+        run: npm -v
