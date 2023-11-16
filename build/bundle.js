@@ -15,7 +15,7 @@
   \****************/
 /***/ ((module) => {
 
-eval("function sum(a, b) {\r\n    return a + b;\r\n  }\r\n  module.exports = sum;\n\n//# sourceURL=webpack://project-circle/./sum.js?");
+eval("function sum(a, b) {\n    return a + b;\n  }\n  module.exports = sum;\n\n//# sourceURL=webpack://project-circle/./sum.js?");
 
 /***/ })
 
