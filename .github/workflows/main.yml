@@ -1,0 +1,20 @@
+name: Contionuous_Integration
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  hello_world:
+    runs-on: ubuntu-latest
+    steps:
+      - name:
+        run: echo "Hello world"
+
+
+  goodbye_world:
+    runs-on: ubuntu-latest  
+    steps:
+      - name:
+        run: echo "goodbye world"
