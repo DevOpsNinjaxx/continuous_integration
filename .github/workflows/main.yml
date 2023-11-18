@@ -34,7 +34,6 @@ jobs:
         run: npx eslint sum.js
 
   test:
-    needs: lint
     runs-on: ubuntu-latest  
     steps:
       - name: Check out repository code
