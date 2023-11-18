@@ -53,7 +53,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Run Tests
+      - name: Fix dependency vulnerabilities
         run: npm audit fix   
 
 
