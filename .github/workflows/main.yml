@@ -36,6 +36,7 @@ jobs:
         run: npx eslint sum.js
 
   test:
+    needs: build
     runs-on: ubuntu-latest  
     steps:
       - name: Check out repository code
@@ -48,6 +49,7 @@ jobs:
         run: npm run test
 
   audit_check:
+    needs: [lint, test]
     needs: test
     runs-on: ubuntu-latest  
     steps:
