@@ -42,3 +42,21 @@ jobs:
 
       - name: Apply infrastructure changes
         run: terraform apply tfplan
+        
+      - name: Get EC2 Instance Public IP by Tag Name
+        run: |
+          # Fetch the public IP address of the EC2 instance based on its tag name with PR number
+          EC2_INSTANCE_IP=$(aws ec2 describe-instances \
+                              --filters "Name=tag:Name,Values=development-instance-PR-${{ github.event.inputs.PR_number }}" \
+                              --query 'Reservations[*].Instances[*].PublicIpAddress' \
+                              --output text)
+
+          # Append the retrieved IP address to the Ansible inventory file
+          echo "development-instance-PR-${{ github.event.inputs.PR_number }} ansible_host=${EC2_INSTANCE_IP}" >> inventory
+          cat  inventory
+
+      - name: Persist Ansible inventory to artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ansible-inventory
+          path: inventory
