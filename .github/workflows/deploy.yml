@@ -43,7 +43,10 @@ jobs:
       - name: Apply infrastructure changes
         run: terraform apply tfplan
 
-
+  setup_ansible:
+    runs-on: ubuntu-latest
+      
+    teps:
       - name: Get EC2 Instance Public IP by Tag Name
         run: |
           # Fetch the public IP address of the EC2 instance based on its tag name with PR number
