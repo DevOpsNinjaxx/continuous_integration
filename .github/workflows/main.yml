@@ -57,8 +57,5 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Fix dependency vulnerabilities
-        run: npm audit fix   
-
-
-        
+        run: npm audit fix
       
